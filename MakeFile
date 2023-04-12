@@ -1,0 +1,16 @@
+CFLAGS=-W -Wall -I/usr/local/include
+LDFLAGS=-L/usr/local/lib
+LIBRARIES=-lADTs
+PROGRAMS=stacktest
+
+all: $(PROGRAMS)
+
+stacktest: stacktest.o arraystack.o
+	gcc $(LDFLAGS) -o $@ $^ $(LIBRARIES)
+
+stacktest.o: stacktest.c
+arraystack.o: arraystack.c
+
+clean:
+	rm -f $(PROGRAMS) *.o
+	
